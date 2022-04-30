@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/NewFolder/PUSL2023CourseWork/app/src/main/res/layout-normal/activity_main.xml" value="0.19114583333333332" />
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/drawable/background_btn.xml" value="0.288" />
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/drawable/background_edittext.xml" value="0.2875" />
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/drawable/bottom_nav_colors.xml" value="0.3385" />
@@ -29,7 +30,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
