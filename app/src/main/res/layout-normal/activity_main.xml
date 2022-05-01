@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="394dp"
         android:layout_height="785dp"
-        android:background="@drawable/startupbg"
+        android:background="@drawable/ic_google_pixel_6_pro___1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.40"

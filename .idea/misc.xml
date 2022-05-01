@@ -27,10 +27,12 @@
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/layout/login.xml" value="0.35778985507246375" />
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/menu/menu.xml" value="0.3638888888888889" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1515" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout-normal/activity_main.xml" value="0.2" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
