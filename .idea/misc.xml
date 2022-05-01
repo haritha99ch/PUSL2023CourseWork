@@ -28,7 +28,17 @@
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/menu/menu.xml" value="0.3638888888888889" />
         <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1515" />
-        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout-normal/activity_main.xml" value="0.2" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/drawable/ic_right.xml" value="0.1205" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/drawable/slide_item_container.xml" value="0.1205" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout-normal/activity_main.xml" value="0.264" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout/activity_gamefeed.xml" value="0.18802083333333333" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout/activity_login.xml" value="0.18802083333333333" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout/activity_registration.xml" value="0.18802083333333333" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout/fragment_feeds.xml" value="0.18802083333333333" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout/fragment_notification.xml" value="0.18802083333333333" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout/fragment_profile.xml" value="0.18802083333333333" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout/fragment_search.xml" value="0.18802083333333333" />
+        <entry key="..\:/android studio/Coursework/PUSL2023CourseWork/app/src/main/res/layout/slide_item_container.xml" value="0.18802083333333333" />
       </map>
     </option>
   </component>
