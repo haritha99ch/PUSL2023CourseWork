@@ -20,6 +20,10 @@
     <string name="welcome_to_gamegraphy">Welcome to GameGraphy!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Join_with_us">Join With Us</string>
+    <string name="Dont_have_account">Don\'t Have an Account?</string>
+    <string name="Allready_have_account">Already Have an Account?</string>
+    <string name="Register_Here">Register Here</string>
 
 
 </resources>
