@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.login.Data.Entities.Account
+import com.example.login.Data.Entities.Comment
 import com.example.login.Data.Entities.Post
 import com.example.login.Data.Entities.User
 
@@ -12,7 +13,8 @@ import com.example.login.Data.Entities.User
     entities = [
         User::class,
         Account::class,
-        Post::class
+        Post::class,
+        Comment::class
     ],
     version = 1
 )
