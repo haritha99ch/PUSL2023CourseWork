@@ -4,7 +4,6 @@
     <string name="login">Login</string>
     <string name="SignIn">SignIn</string>
     <string name="SignUp">SignUp</string>
-    <string name="todo">TODO</string>
     <string name="create_account">Create Account</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="register">Register</string>
@@ -18,8 +17,27 @@
     <string name="female">Female</string>
     <string name="other">Other</string>
     <string name="welcome_to_gamegraphy">Welcome to GameGraphy!</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cool_cat">Cool Cat</string>
+    <string name="_13_hrs">13 hrs</string>
+    <string name="first_post_of_gamegraphy">First Post of GameGraphy!</string>
+    <string name="_20">20</string>
+    <string name="_8_comments">8 Comments</string>
+    <string name="todo">TODO</string>
+    <string name="cool_cat2">Cool CaT</string>
+    <string name="_113">113</string>
+    <string name="followers">Followers</string>
+    <string name="_150">150</string>
+    <string name="following">Following</string>
+    <string name="_100">100</string>
+    <string name="likes">Likes</string>
+    <string name="posts">Posts</string>
+    <string name="_25">25</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="todo3">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="postsitem">Posts</string>
+    <string name="gamesitem">Games</string>
 
 
 </resources>
