@@ -14,6 +14,6 @@ data class User(
     var FirstName:String,
     var LastName:String,
     var Gender:String,
-    var DOB:LocalDate,
+    var DOB:String,
     var Age:Int
 ) {}
