@@ -7,7 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@drawable/ic_spalsh"
     tools:ignore="InvalidId">
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,8 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="@string/login"
-        android:textColor="@color/purple_700"
+        android:text="@string/Join_with_us"
+        android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +63,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        <EditText
+
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextTextPersonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,9 +73,10 @@
             android:ems="10"
             android:hint="@string/username"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textEmailAddress"
             android:padding="24dp"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            />
 
         <View
             android:layout_width="match_parent"
@@ -82,7 +87,8 @@
 
             />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
+
             android:id="@+id/editTextTextPassword"
             android:layout_width="match_parent"
             android:layout_height="71dp"
@@ -111,10 +117,10 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
 
-        android:text="@string/SignUp"
+        android:text="@string/Dont_have_account"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:cornerRadius="50dp"
@@ -129,7 +135,7 @@
         android:layout_height="68dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/background_btn"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/bottom_nav_background"
         android:padding="15dp"
         android:text="@string/login"
         android:textColor="@color/white"
