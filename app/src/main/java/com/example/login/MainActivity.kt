@@ -4,11 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.login.Data.GGDbContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +25,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //Database
+        val dao=GGDbContext.getInstance(this).gGdbDao
+        CoroutineScope(Dispatchers.IO).launch {
+            val data=dao.sellectUserAccount()
+            Log.i("GGData", "${data.toString()}")
+        }
+
         //button
         val  button = findViewById<Button>(R.id.loginbtn)
 
