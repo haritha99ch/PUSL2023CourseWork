@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         //Database
         val dao=GGDbContext.getInstance(this).gGdbDao
         CoroutineScope(Dispatchers.IO).launch {
-            val data=dao.sellectUserAccount()
+            val data=dao.selectPostAccount()
             Log.i("GGData", "${data.toString()}")
         }
 

@@ -5,12 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.login.Data.Entities.Account
+import com.example.login.Data.Entities.Post
 import com.example.login.Data.Entities.User
 
 @Database(
     entities = [
         User::class,
-        Account::class
+        Account::class,
+        Post::class
     ],
     version = 1
 )
