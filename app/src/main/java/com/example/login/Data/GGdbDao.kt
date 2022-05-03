@@ -2,13 +2,13 @@ package com.example.login.Data
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.login.Data.Entities.Relations.PostsAccount
-import com.example.login.Data.Entities.Relations.PostwAccount
-import com.example.login.Data.Entities.Relations.PostwComments
-import com.example.login.Data.Entities.Relations.UserAccount
+import com.example.login.Data.Entities.Relations.*
 
 @Dao
 interface GGdbDao {
+
+    @Query("Select * From Comment Where PostId=:postId")
+    fun selectCommentswAccount(postId:Int):List<CommentwAccount>
 
     @Query("Select * From Post")
     fun selectPostswAccount():List<PostwAccount>
