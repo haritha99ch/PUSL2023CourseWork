@@ -28,8 +28,10 @@ class MainActivity : AppCompatActivity() {
         //Database
         val dao=GGDbContext.getInstance(this).gGdbDao
         CoroutineScope(Dispatchers.IO).launch {
-            val data=dao.selectCommentswAccount(2)
-            Log.i("GGData", "$data")
+            val data=dao.selectPostswAccount()
+            val postId=data[0].Post.PostId
+            val nestData=dao.selectCommentswAccount(postId)
+            Log.i("GGData", "$nestData")
         }
 
         //button
