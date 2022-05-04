@@ -38,6 +38,10 @@
     <string name="todo2">TODO</string>
     <string name="postsitem">Posts</string>
     <string name="gamesitem">Games</string>
+    <string name="Join_with_us">Join with us</string>
+    <string name="Dont_have_account">Don\'t Have An Account</string>
+    <string name="Register_Here">Register Here</string>
+    <string name="Allready_have_account">Already Have An Account</string>
 
 
 </resources>

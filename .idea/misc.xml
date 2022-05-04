@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/CourseWorks/PUSL2023/PUSL2023CourseWork/app/src/main/res/layout-normal/activity_main.xml" value="0.1105072463768116" />
+        <entry key="..\:/Projects/CourseWorks/PUSL2023/PUSL2023CourseWork/app/src/main/res/layout/activity_gamefeed.xml" value="0.1105072463768116" />
+        <entry key="..\:/Projects/CourseWorks/PUSL2023/PUSL2023CourseWork/app/src/main/res/layout/activity_login.xml" value="0.1105072463768116" />
+        <entry key="..\:/Projects/CourseWorks/PUSL2023/PUSL2023CourseWork/app/src/main/res/layout/activity_registration.xml" value="0.19114583333333332" />
+        <entry key="..\:/Projects/CourseWorks/PUSL2023/PUSL2023CourseWork/app/src/main/res/layout/fragment_feeds.xml" value="0.1105072463768116" />
+        <entry key="..\:/Projects/CourseWorks/PUSL2023/PUSL2023CourseWork/app/src/main/res/layout/slide_item_container.xml" value="0.19114583333333332" />
         <entry key="..\:/Projects/NewFolder/PUSL2023CourseWork/app/src/main/res/layout-normal/activity_main.xml" value="0.19114583333333332" />
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/drawable/background_btn.xml" value="0.288" />
         <entry key="..\:/Software Engineering/Second Year/2nd Semester/Mobile App Development/Course_work/UI's/Login/app/src/main/res/drawable/background_edittext.xml" value="0.2875" />
