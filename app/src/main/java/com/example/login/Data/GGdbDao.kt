@@ -8,6 +8,12 @@ import com.example.login.Data.Entities.Relations.*
 @Dao
 interface GGdbDao {
 
+    @Query("Select Count() From Followers Where UserName=:userName")
+    fun countFollowers(userName:String):Int
+
+    @Query("Select Count() From Followers Where Follower=:userName")
+    fun countFollowing(userName:String):Int
+
     @Query("Select * From Comment Where PostId=:postId")
     fun selectCommentswAccount(postId:Int):List<CommentwAccount>
 
