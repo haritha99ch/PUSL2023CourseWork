@@ -30,8 +30,9 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val data=dao.selectPostswAccount()
             val postId=data[0].Post.PostId
-            val nestData=dao.selectCommentswAccount(postId)
-            Log.i("GGData", "$nestData")
+            val image=dao.selectPostImage(postId)
+            val commets=dao.selectCommentswAccount(postId)
+            Log.i("GGData", "$data \n $image \n $commets")
         }
 
         //button
