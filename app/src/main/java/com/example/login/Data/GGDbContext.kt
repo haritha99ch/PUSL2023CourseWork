@@ -13,9 +13,10 @@ import com.example.login.Data.Entities.*
         Account::class,
         Post::class,
         Comment::class,
-        Image::class
+        Image::class,
+        Followers::class
     ],
-    version = 1
+    version = 2
 )
 abstract class GGDbContext:RoomDatabase() {
     abstract val gGdbDao:GGdbDao
