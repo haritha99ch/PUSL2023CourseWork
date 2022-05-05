@@ -3,11 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".notificationFragment">
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bottom_nav_selected_item"
@@ -43,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Cool Cat"
+                    android:text="@string/cool_cat"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -52,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:text="commented on your post"
+                    android:text="@string/commented_on_your_post"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     tools:ignore="TextContrastCheck" />
@@ -74,8 +72,5 @@
 
 
     </androidx.cardview.widget.CardView>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

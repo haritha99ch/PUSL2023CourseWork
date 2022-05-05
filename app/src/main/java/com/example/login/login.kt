@@ -10,24 +10,23 @@ class login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val  loginbutton = findViewById<Button>(R.id.signinbtn)
+        val loginbutton: Button = findViewById(R.id.signinbtn)
 
         loginbutton.setOnClickListener {
             val intent = Intent(this,gamefeed::class.java)
             startActivity(intent)
             finish()
+
         }
 
+        val signupbutton: Button = findViewById(R.id.signupbtn)
 
-
-        val regbtn = findViewById<Button>(R.id.singupbtn)
-
-        regbtn.setOnClickListener{
-
+        signupbutton.setOnClickListener {
             val intent = Intent(this,Registration::class.java)
             startActivity(intent)
             finish()
         }
 
     }
+
 }

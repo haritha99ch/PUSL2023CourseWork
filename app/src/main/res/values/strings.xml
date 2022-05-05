@@ -42,6 +42,8 @@
     <string name="Dont_have_account">Don\'t Have An Account</string>
     <string name="Register_Here">Register Here</string>
     <string name="Allready_have_account">Already Have An Account</string>
+    <string name="commented_on_your_post">commented on your post</string>
+
 
 
 </resources>

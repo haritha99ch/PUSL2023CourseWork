@@ -3,6 +3,7 @@ package com.example.login
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
@@ -25,7 +26,10 @@ class gamefeed : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomnav)
         setupWithNavController(bottomNavigationView , navController)
 
-    }
+        val fragment: Fragment = notificationFragment.newInstance()
 
+
+
+    }
 
 }

@@ -10,9 +10,9 @@ class Registration : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
-        val  signinbutton = findViewById<Button>(R.id.loginbtn)
+        val  signinbutton2 = findViewById<Button>(R.id.signin)
 
-        signinbutton.setOnClickListener {
+        signinbutton2.setOnClickListener {
             val intent = Intent(this,login::class.java)
             startActivity(intent)
             finish()
