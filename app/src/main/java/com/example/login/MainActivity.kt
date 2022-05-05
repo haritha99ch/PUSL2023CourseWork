@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.Button
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -26,10 +27,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //Database
-        val dao=GGDbContext.getInstance(this).gGdbDao
         CoroutineScope(Dispatchers.IO).launch {
-            var data=dao.countFollowers("Infi")
-            Log.i("GGData", "$data Hello")
+            val Dao= GGDbContext.getInstance(applicationContext).gGdbDao
+            val posts=Dao.selectPostswAccount()
         }
 
         //button

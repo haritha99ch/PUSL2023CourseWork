@@ -1,19 +1,21 @@
 package com.example.login.ViewModels
 
+import com.example.login.ImgUrl
+
 class Post {
     lateinit var profilePic:String
     lateinit var userName:String
     lateinit var dateTime:String
     lateinit var heading:String
     lateinit var description:String
-    lateinit var image:String
+    lateinit var postImage:String
     var likes:Int=0
-    lateinit var comments:List<comment>
+    lateinit var comments:List<Comment>
+
+    var profilePicUrl:String = ""
+        get() = "$ImgUrl.$profilePic"
+    var postImageUrl:String=""
+        get() = "$ImgUrl.$postImage"
 }
 
-class comment {
-    lateinit var profilePic:String
-    lateinit var userName:String
-    lateinit var dateTime:String
-    lateinit var comment:String
-}
+
