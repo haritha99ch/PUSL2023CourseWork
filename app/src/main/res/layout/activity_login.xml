@@ -67,7 +67,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/loguserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -89,7 +89,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
 
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/logpassword"
             android:layout_width="match_parent"
             android:layout_height="71dp"
             android:ems="10"
