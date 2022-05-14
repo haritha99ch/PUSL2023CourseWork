@@ -25,29 +25,55 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:text="@string/Register_Here"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
         tools:ignore="TextContrastCheck" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="356dp"
-        android:layout_height="354dp"
+        android:layout_width="350dp"
+        android:layout_height="440dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/background_edittext"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/signin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/firstName"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName|textEmailAddress"
+            android:padding="10dp"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/lastName"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName|textEmailAddress"
+            android:padding="10dp"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
         <EditText
             android:id="@+id/email"
@@ -75,10 +101,10 @@
             android:background="@null"
             android:ems="10"
             android:hint="@string/username"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:padding="10dp"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
-            android:importantForAutofill="no" />
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
         <View
             android:layout_width="match_parent"
@@ -94,10 +120,10 @@
             android:background="@null"
             android:ems="10"
             android:hint="@string/age"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:padding="10dp"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
-            android:importantForAutofill="no" />
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
         <View
             android:layout_width="match_parent"
@@ -162,10 +188,10 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/password1"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
             android:padding="10dp"
-            tools:ignore="TouchTargetSizeCheck"
-            android:importantForAutofill="no" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <View
             android:layout_width="match_parent"
@@ -180,10 +206,10 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/confirm_password"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
             android:padding="10dp"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
-            android:importantForAutofill="no" />
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
         <View
             android:layout_width="match_parent"
@@ -198,27 +224,22 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
             android:background="@drawable/background_btn"
-            android:textColor="@color/white"
             android:text="@string/register"
+            android:textColor="@color/white"
             tools:ignore="DuplicateSpeakableTextCheck" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/signin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="123dp"
+        android:layout_width="255dp"
+        android:layout_height="25dp"
         android:background="#00FFFFFF"
         android:text="@string/Allready_have_account"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

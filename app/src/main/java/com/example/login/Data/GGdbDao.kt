@@ -1,12 +1,22 @@
 package com.example.login.Data
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
+import com.example.login.Data.Entities.Account
 import com.example.login.Data.Entities.Image
 import com.example.login.Data.Entities.Relations.*
+import com.example.login.Data.Entities.User
 
 @Dao
 interface GGdbDao {
+
+    @Insert
+    suspend fun NewUser(user: User)
+
+    @Insert
+    suspend fun NewAccount(account: Account)
 
     @Query("Select Count() From Followers Where UserName=:userName")
     fun countFollowers(userName:String):Int
