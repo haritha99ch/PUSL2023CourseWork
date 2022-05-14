@@ -1,12 +1,14 @@
 package com.example.login
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.Data.GGDbContext
 import com.example.login.ViewModels.Comment
@@ -47,6 +49,7 @@ class feedsFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view=inflater.inflate(R.layout.fragment_feeds, container, false)
+        val newpostbtn: Button = view.findViewById(R.id.createnewpostbtn)
         recyclerView=view.findViewById(R.id.feedView)
         var Posts = mutableListOf<Post>()
         CoroutineScope(Dispatchers.IO).launch {
@@ -82,6 +85,11 @@ class feedsFragment() : Fragment() {
             Log.i("GGData", "$Posts gotposts")
             val adapter=FeedRecyclerAdapter(requireContext(), Posts)
             recyclerView.adapter=adapter
+        }
+        newpostbtn.setOnClickListener {
+
+            val intent = Intent(requireContext(),AddNewPost::class.java)
+            startActivity(intent)
         }
 
 

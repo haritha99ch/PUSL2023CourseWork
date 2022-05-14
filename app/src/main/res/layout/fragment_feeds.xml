@@ -35,6 +35,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <Button
+                android:id="@+id/createnewpostbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/bottom_nav_selected_item"
+                android:text="@string/create_new_post"
+                tools:ignore="TextContrastCheck" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/feedView"
                 android:layout_width="match_parent"

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Login">
         <activity
+            android:name=".AddNewPost"
+            android:exported="false" />
+        <activity
             android:name=".gamefeed"
             android:exported="false" />
         <activity
