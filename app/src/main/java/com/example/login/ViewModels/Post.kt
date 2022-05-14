@@ -10,7 +10,7 @@ class Post {
     lateinit var description:String
     lateinit var postImage:String
     var likes:Int=0
-    lateinit var comments:List<Comment>
+    var comments:List<Comment>? = null
 
     var profilePicUrl:String = ""
         get() = "$ImgUrl.$profilePic"

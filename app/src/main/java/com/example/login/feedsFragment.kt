@@ -68,23 +68,24 @@ class feedsFragment() : Fragment() {
                 Post.description="Elo"
                 Post.postImageUrl="sdf"
                 Post.profilePicUrl="sdf"
-                PostComments.forEach { j ->
-                    var Comment= Comment()
-                    Comment.profilePic = j.Account.ProfilePic
-                    Comment.userName = j.Account.UserName
-                    Comment.dateTime = j.Comment.DateTime
-                    Comment.comment = j.Comment.Comment
-                    Post.comments += Comment
+
+                PostComments.forEach {
+                    val Comment=Comment()
+                    Comment.userName=it.Comment.UserName
+                    Comment.comment=it.Comment.Comment
+                    Post.comments = Post.comments?.plus(Comment)
                 }
                 Posts.add(Post)
-                Log.i("GGData", "$i itterate \n")
+                Log.i("GGData", "$PostComments itterate \n")
 
             }
+            Log.i("GGData", "$Posts gotposts")
+            val adapter=FeedRecyclerAdapter(requireContext(), Posts)
+            recyclerView.adapter=adapter
         }
-        Log.i("GGData", "$Posts gotposts")
 
-        val adapter=FeedRecyclerAdapter(requireContext(), Posts)
-        recyclerView.adapter=adapter
+
+
         // Inflate the layout for this fragment
         return view
 
