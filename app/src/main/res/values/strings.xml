@@ -45,6 +45,7 @@
     <string name="commented_on_your_post">commented on your post</string>
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
+    <string name="logout">Log Out</string>
 
 
 </resources>
