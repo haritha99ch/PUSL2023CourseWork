@@ -2,6 +2,7 @@ package com.example.login.Data.Entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.login.ImgUrl
 
 @Entity(tableName = "Account")
 data class Account(
@@ -13,7 +14,7 @@ data class Account(
     var CoverPic:String
 ){
     val ProfilePicUrl
-        get() = "Url/$ProfilePic.png"
+        get() = "$ImgUrl$ProfilePic"
     val CoverPicUrl
-        get() = "Url/$CoverPic.png"
+        get() = "$ImgUrl$CoverPic"
 }

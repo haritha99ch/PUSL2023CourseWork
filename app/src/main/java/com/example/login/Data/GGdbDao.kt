@@ -39,6 +39,6 @@ interface GGdbDao {
     @Query("Select * From Account")
     fun selectPostAccount():List<PostsAccount>
 
-    @Query("Select * From Account")
-    fun selectUserAccount(): List<UserAccount>
+    @Query("Select * From Account Where UserName=:userName")
+    fun selectUserAccount(userName:String): UserAccount
 }

@@ -45,12 +45,6 @@
     <string name="commented_on_your_post">commented on your post</string>
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
-    <string name="create_new_post">Create new Post</string>
-    <string name="post_image">post_image</string>
-    <string name="select_file">Select File</string>
-    <string name="post_btn">Post</string>
-    <string name="enter_text_here_to_post">Enter text here to post</string>
-    <string name="new_post">New Post</string>
 
 
 </resources>
