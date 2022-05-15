@@ -1,3 +1,3 @@
 package com.example.login
 
-const val ImgUrl="R.drawable"
+const val ImgUrl="R.drawable."

@@ -1,14 +1,20 @@
 package com.example.login
 
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.example.login.Data.GGDbContext
 import com.example.login.Session.LoginPref
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,6 +51,14 @@ class profileFragment : Fragment() {
         var userName=view.findViewById<TextView>(R.id.accUserName)
         var user:HashMap<String,String> = session.getUserDetails()
         userName.text=user.get(LoginPref.KEY_USERNAME)
+        var profilePic=view.findViewById<ImageView>(R.id.profilePic)
+        CoroutineScope(Dispatchers.IO).launch {
+            val Dao = GGDbContext.getInstance(requireContext()).gGdbDao
+            val userAccount=Dao.selectUserAccount(userName.text.toString())
+            val imageResource = userAccount.Account.ProfilePicUrl
+            profilePic.setImageResource(R.drawable.profiledefault)
+            Log.i("Gender", "${userAccount.Account.ProfilePicUrl}")
+        }
         Log.i("Gender", "${user.get(LoginPref.KEY_USERNAME)}")
 
         btnLogOut.setOnClickListener{

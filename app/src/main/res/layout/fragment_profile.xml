@@ -21,12 +21,11 @@
         android:contentDescription="@string/todo" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/profilePic"
         android:layout_width="138dp"
         android:layout_height="104dp"
         android:layout_marginTop="100dp"
         android:contentDescription="@string/todo2"
-        android:src="@drawable/pro_pic_01"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +42,7 @@
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
 
     <LinearLayout
         android:id="@+id/pro_detail"
