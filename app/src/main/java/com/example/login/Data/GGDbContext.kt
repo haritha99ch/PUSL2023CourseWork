@@ -14,7 +14,8 @@ import com.example.login.Data.Entities.*
         Post::class,
         Comment::class,
         Image::class,
-        Followers::class
+        Followers::class,
+        Reactions::class
     ],
     version = 2
 )
