@@ -45,7 +45,13 @@
     <string name="commented_on_your_post">commented on your post</string>
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
-    <string name="logout">Log Out</string>
+    <string name="select_file">select_file</string>
+    <string name="post_btn">post_btn</string>
+    <string name="post_image">post_image</string>
+    <string name="enter_text_here_to_post">enter_text_here_to_post</string>
+    <string name="new_post">new_post</string>
+    <string name="create_new_post">create_new_post</string>
+    <string name="logout">logout</string>
 
 
 </resources>
