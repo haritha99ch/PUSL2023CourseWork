@@ -8,17 +8,16 @@
     tools:context=".profileFragment">
 
 
-
     <ImageView
         android:id="@+id/coverimg"
         android:layout_width="396dp"
         android:layout_height="159dp"
         android:background="@drawable/coverimg"
+        android:contentDescription="@string/todo"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/profilePic"
@@ -104,62 +103,39 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/post_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pro_detail">
-
-        <TextView
-            android:id="@+id/no_of_posts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:textColor="#BDBDBD"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/poststag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/posts"
-            android:textColor="#BDBDBD"
-            android:textSize="17sp" />
-
-
-    </LinearLayout>
-
     <Button
         android:id="@+id/edit_profile"
-        android:layout_width="293dp"
+        android:layout_width="200dp"
         android:layout_height="35dp"
-        android:layout_marginTop="24dp"
         android:background="@drawable/background_btn"
         android:backgroundTint="@color/grey"
         android:text="@string/edit_profile"
         android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_layout"
+        app:layout_constraintTop_toBottomOf="@+id/pro_detail"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/logout"
-        android:layout_width="293dp"
+        android:layout_width="200dp"
         android:layout_height="35dp"
-        android:layout_marginTop="24dp"
         android:background="@drawable/background_btn"
         android:backgroundTint="@color/grey"
         android:text="@string/logout"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_profile"
+        app:layout_constraintStart_toEndOf="@+id/edit_profile"
+        app:layout_constraintTop_toBottomOf="@+id/pro_detail"
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/feedView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/logout"
+        app:spanCount="1"
+        tools:layout_editor_absoluteX="8dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

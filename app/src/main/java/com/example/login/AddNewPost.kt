@@ -20,6 +20,7 @@ import com.example.login.Data.GGDbContext
 import com.example.login.Session.LoginPref
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.InputStream
@@ -84,6 +85,7 @@ class AddNewPost : AppCompatActivity() {
                     )
                     Dao.NewImage(newImage)
                     Log.i("SelectedFile", "${postId}")
+                    this.cancel()
 
                 }
                 Toast.makeText(this, "A New Post has Created", Toast.LENGTH_SHORT).show()

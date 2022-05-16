@@ -26,29 +26,32 @@ interface GGdbDao {
     suspend fun NewReaction(reactions: Reactions)
 
     @Query("Select Exists(Select * From Reactions Where PostId=:postId And UserName=:userName)")
-    fun isLikedPost(postId: Int, userName: String):Boolean
+    suspend fun isLikedPost(postId: Int, userName: String):Boolean
 
     @Query("Select Count() From Followers Where UserName=:userName")
-    fun countFollowers(userName:String):Int
+    suspend fun countFollowers(userName:String):Int
 
     @Query("Select Count() From Followers Where Follower=:userName")
-    fun countFollowing(userName:String):Int
+    suspend fun countFollowing(userName:String):Int
 
     @Query("Select * From Comment Where PostId=:postId")
-    fun selectCommentswAccount(postId:Int):List<CommentwAccount>
+    suspend fun selectCommentswAccount(postId:Int):List<CommentwAccount>
 
     @Query("Select * From Image Where PostId=:postId")
-    fun selectPostImage(postId: Int):Image
+    suspend fun selectPostImage(postId: Int):Image
 
     @Query("Select * From Post Order By RANDOM()")
-    fun selectPostswAccount():List<PostwAccount>
+    suspend fun selectPostswAccount():List<PostwAccount>
+
+    @Query("Select * From Post Where UserName=:userName Order By RANDOM()")
+    suspend fun selectUserPostswAccount(userName: String):List<PostwAccount>
 
     @Query("Select * From Post")
-    fun selectPostCommentsAccount():List<PostwComments>
+    suspend fun selectPostCommentsAccount():List<PostwComments>
 
     @Query("Select * From Account")
-    fun selectPostAccount():List<PostsAccount>
+    suspend fun selectPostAccount():List<PostsAccount>
 
     @Query("Select * From Account Where UserName=:userName")
-    fun selectUserAccount(userName:String): UserAccount
+    suspend fun selectUserAccount(userName:String): UserAccount
 }

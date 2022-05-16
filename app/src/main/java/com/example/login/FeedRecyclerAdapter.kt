@@ -26,15 +26,13 @@ class FeedRecyclerAdapter(
 ) : RecyclerView.Adapter<FeedRecyclerAdapter.PostViewHolder>() {
 
 
-
     inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtUserName = itemView.findViewById<TextView>(R.id.userName)
-        val txtDatetime=itemView.findViewById<TextView>(R.id.date_time)
-        val imgPostImage=itemView.findViewById<ImageView>(R.id.postpic)
-        val btnLike=itemView.findViewById<ImageButton>(R.id.btnLike)
+        val txtDatetime = itemView.findViewById<TextView>(R.id.date_time)
+        val imgPostImage = itemView.findViewById<ImageView>(R.id.postpic)
+        val btnLike = itemView.findViewById<ImageButton>(R.id.btnLike)
 
     }
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -47,59 +45,55 @@ class FeedRecyclerAdapter(
         val post = posts[position]
         with(holder) {
             txtUserName.text = post.userName
-            var img=post.postImageUrl
+            var img = post.postImageUrl
             Glide.with(context)
                 .asBitmap()
                 .load(img)
                 .into(imgPostImage)
-            if (isLiked(post.postId)){
-                btnLike.setColorFilter(ContextCompat.getColor(context, R.color.DarkPink), android.graphics.PorterDuff.Mode.SRC_IN)
-            }else{
-                btnLike.setColorFilter(ContextCompat.getColor(context, R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            if (false) {
+                btnLike.setColorFilter(
+                    ContextCompat.getColor(context, R.color.DarkPink),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
+            } else {
+                btnLike.setColorFilter(
+                    ContextCompat.getColor(context, R.color.white),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
             btnLike.setOnClickListener {
                 Toast.makeText(context, "You liked this photo ", Toast.LENGTH_SHORT).show()
                 likeThePost(post.postId)
-                btnLike.setColorFilter(ContextCompat.getColor(context, R.color.DarkPink), android.graphics.PorterDuff.Mode.SRC_IN)
+                btnLike.setColorFilter(
+                    ContextCompat.getColor(context, R.color.DarkPink),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
             Log.i("GGData", "$img RecyclerView")
-            var list= mutableListOf<Comment>()
-            var testCom=Comment()
-            testCom.userName="Infi"
-            testCom.comment="This is a comment"
-            list+=testCom
+            var list = mutableListOf<Comment>()
+            var testCom = Comment()
+            testCom.userName = "Infi"
+            testCom.comment = "This is a comment"
+            list += testCom
 
 
-            val commentRecyclerAdapter=CommentRecyclerAdapter(context, list)
+            val commentRecyclerAdapter = CommentRecyclerAdapter(context, list)
         }
     }
 
-    private fun isLiked(postId: Int): Boolean {
-        var isLiked:Boolean=false
-        CoroutineScope(Dispatchers.IO).launch {
-            var session = LoginPref(context)
-            val user=session.getUserDetails()
-            val Dao=GGDbContext.getInstance(context).gGdbDao
-            val liked=Dao.isLikedPost(postId, user[LoginPref.KEY_USERNAME].toString())
-            Log.i("Liked", "$liked")
-            withContext(Dispatchers.Main){
-                isLiked=liked
-            }
-        }
-        return isLiked
-    }
 
     private fun likeThePost(postId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             var session = LoginPref(context)
-            val user=session.getUserDetails()
-            val Dao=GGDbContext.getInstance(context).gGdbDao
+            val user = session.getUserDetails()
+            val Dao = GGDbContext.getInstance(context).gGdbDao
             Dao.NewReaction(
                 Reactions(
                     postId,
                     user.get(LoginPref.KEY_USERNAME).toString()
                 )
             )
+            this.cancel()
         }
     }
 

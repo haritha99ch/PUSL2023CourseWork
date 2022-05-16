@@ -11,6 +11,7 @@ import com.example.login.Data.Entities.User
 import com.example.login.Data.GGDbContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class Registration : AppCompatActivity() {
@@ -60,6 +61,7 @@ class Registration : AppCompatActivity() {
                 val Dao = GGDbContext.getInstance(context).gGdbDao
                 Dao.NewAccount(account)
                 Dao.NewUser(user)
+                this.cancel()
             }
         }
 

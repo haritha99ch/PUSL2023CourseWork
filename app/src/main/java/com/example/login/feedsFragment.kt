@@ -14,10 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.login.Data.GGDbContext
 import com.example.login.ViewModels.Comment
 import com.example.login.ViewModels.Post
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -88,7 +85,7 @@ class feedsFragment() : Fragment() {
             val adapter=FeedRecyclerAdapter(requireContext(), Posts)
             recyclerView.adapter=adapter
 
-
+        this.cancel()
         }
         newpostbtn.setOnClickListener {
 

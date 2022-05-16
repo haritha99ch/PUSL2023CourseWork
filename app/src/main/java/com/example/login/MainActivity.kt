@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.login.Data.GGDbContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val Dao= GGDbContext.getInstance(applicationContext).gGdbDao
             val posts=Dao.selectPostswAccount()
+            this.cancel()
         }
 
         //button

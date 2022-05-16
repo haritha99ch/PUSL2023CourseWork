@@ -10,10 +10,14 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.login.Data.GGDbContext
 import com.example.login.Session.LoginPref
+import com.example.login.ViewModels.Comment
+import com.example.login.ViewModels.Post
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,6 +34,7 @@ class profileFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var recyclerView:RecyclerView
     lateinit var session:LoginPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,12 +49,50 @@ class profileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        session= LoginPref(requireContext())
-        session.checkLogin()
+        var session = LoginPref(requireContext())
+        val user = session.getUserDetails()
         val view=inflater.inflate(R.layout.fragment_profile, container, false)
+        recyclerView=view.findViewById(R.id.feedView)
+        var Posts = mutableListOf<Post>()
+        CoroutineScope(Dispatchers.IO).launch {
+            val Dao = GGDbContext.getInstance(requireContext()).gGdbDao
+            val posts = Dao.selectUserPostswAccount(user.get(LoginPref.KEY_USERNAME).toString())
+            Log.i("GGData", "$posts CoroutineScope \n")
+
+            posts.forEach { i ->
+
+                val PostImage = Dao.selectPostImage(i.Post.PostId)
+                val PostComments = Dao.selectCommentswAccount(i.Post.PostId)
+                val Post= Post()
+                Post.postId=i.Post.PostId
+                Post.profilePic = i.Account.ProfilePic
+                Post.userName = i.Account.UserName
+                Post.dateTime = i.Post.DateTime
+                Post.heading = i.Post.Heading
+                Post.postImage = PostImage.ImageName
+                Post.likes = 2
+                Post.heading="Elo"
+                Post.postImageUrl="sdf"
+                Post.profilePicUrl="sdf"
+
+                PostComments.forEach {
+                    val Comment= Comment()
+                    Comment.userName=it.Comment.UserName
+                    Comment.comment=it.Comment.Comment
+                    Post.comments = Post.comments?.plus(Comment)
+                }
+                Posts.add(Post)
+                Log.i("GGData", "$PostComments itterate \n")
+
+            }
+            Log.i("GGData", "$Posts gotposts")
+            val adapter=FeedRecyclerAdapter(requireContext(), Posts)
+            recyclerView.adapter=adapter
+
+            this.cancel()
+        }
         var btnLogOut=view.findViewById<Button>(R.id.logout)
         var userName=view.findViewById<TextView>(R.id.accUserName)
-        var user:HashMap<String,String> = session.getUserDetails()
         userName.text=user.get(LoginPref.KEY_USERNAME)
         var profilePic=view.findViewById<ImageView>(R.id.profilePic)
         CoroutineScope(Dispatchers.IO).launch {
@@ -58,6 +101,7 @@ class profileFragment : Fragment() {
             val imageResource = userAccount.Account.ProfilePicUrl
             profilePic.setImageResource(R.drawable.profiledefault)
             Log.i("Gender", "${userAccount.Account.ProfilePicUrl}")
+            this.cancel()
         }
         Log.i("Gender", "${user.get(LoginPref.KEY_USERNAME)}")
 

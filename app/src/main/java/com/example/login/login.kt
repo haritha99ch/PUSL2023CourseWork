@@ -14,10 +14,7 @@ import com.example.login.Data.Entities.Relations.UserAccount
 import com.example.login.Data.Entities.User
 import com.example.login.Data.GGDbContext
 import com.example.login.Session.LoginPref
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +56,7 @@ class login : AppCompatActivity() {
                     }
                     Log.i("Login", "$userAccount")
                     Log.i("Login", "$isValid")
+                    this.cancel()
                 }
                 Log.i("Login", "$isValid")
 
