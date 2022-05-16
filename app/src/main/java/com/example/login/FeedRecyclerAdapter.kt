@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.login.ViewModels.Comment
 import com.example.login.ViewModels.Post
 
@@ -33,14 +34,18 @@ class FeedRecyclerAdapter(
         with(holder) {
             txtUserName.text = post.userName
             var img=post.postImageUrl
-            Log.i("GGData", "${post.comments} RecyclerView")
+            Glide.with(context)
+                .asBitmap()
+                .load(img)
+                .into(imgPostImage)
+            Log.i("GGData", "$img RecyclerView")
             var list= mutableListOf<Comment>()
             var testCom=Comment()
             testCom.userName="Infi"
             testCom.comment="This is a comment"
             list+=testCom
 
-            imgPostImage.setImageResource(R.drawable.killer)
+
             val commentRecyclerAdapter=CommentRecyclerAdapter(context, list)
             rwComments.adapter=commentRecyclerAdapter
         }

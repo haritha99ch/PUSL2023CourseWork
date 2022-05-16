@@ -7,36 +7,45 @@
     tools:context=".AddNewPost">
 
     <TextView
+        android:padding="1dp"
         android:id="@+id/new_post"
         android:layout_width="400dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/bottom_nav_selected_item"
-        android:text="@string/new_post"
+        android:text="@string/create_a_new_post"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/postdescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/postdescription"
+        android:id="@+id/postGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="@string/enter_text_here_to_post"
+        android:hint="@string/game_name"
         android:importantForAutofill="no"
         android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="#78909C"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/new_post"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_post"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/heading"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#78909C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postGame"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -47,7 +56,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postdescription" />
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
 
     <Button
         android:id="@+id/filepickerbtn"

@@ -6,6 +6,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.example.login.Data.Entities.Account
 import com.example.login.Data.Entities.Image
+import com.example.login.Data.Entities.Post
 import com.example.login.Data.Entities.Relations.*
 import com.example.login.Data.Entities.User
 
@@ -17,6 +18,12 @@ interface GGdbDao {
 
     @Insert
     suspend fun NewAccount(account: Account)
+
+    @Insert
+    suspend fun NewPost(post: Post):Long
+
+    @Insert
+    suspend fun NewImage(image: Image)
 
     @Query("Select Count() From Followers Where UserName=:userName")
     fun countFollowers(userName:String):Int

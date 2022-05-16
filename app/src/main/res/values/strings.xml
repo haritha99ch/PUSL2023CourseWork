@@ -52,6 +52,9 @@
     <string name="new_post">new_post</string>
     <string name="create_new_post">create_new_post</string>
     <string name="logout">logout</string>
+    <string name="create_a_new_post">Create A New Post</string>
+    <string name="game_name">Game Name</string>
+    <string name="heading">Heading</string>
 
 
 </resources>

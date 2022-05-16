@@ -68,7 +68,7 @@ class feedsFragment() : Fragment() {
                 Post.heading = i.Post.Heading
                 Post.postImage = PostImage.ImageName
                 Post.likes = 2
-                Post.description="Elo"
+                Post.heading="Elo"
                 Post.postImageUrl="sdf"
                 Post.profilePicUrl="sdf"
 
