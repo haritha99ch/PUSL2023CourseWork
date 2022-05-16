@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="DarkPink">#C13584</color>
     <color name="bottom_nav_selected_item">#484848</color>
     <color name="bottom_nav_background">#282828</color>
     <color name="bottom_nav_item">#FFFFFF</color>

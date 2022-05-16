@@ -3,6 +3,7 @@ package com.example.login.ViewModels
 import com.example.login.ImgUrl
 
 class Post {
+    var postId: Int = 0
     lateinit var profilePic:String
     lateinit var userName:String
     lateinit var dateTime:String

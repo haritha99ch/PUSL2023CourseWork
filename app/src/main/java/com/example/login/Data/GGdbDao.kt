@@ -4,11 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import com.example.login.Data.Entities.Account
-import com.example.login.Data.Entities.Image
-import com.example.login.Data.Entities.Post
+import com.example.login.Data.Entities.*
 import com.example.login.Data.Entities.Relations.*
-import com.example.login.Data.Entities.User
 
 @Dao
 interface GGdbDao {
@@ -24,6 +21,12 @@ interface GGdbDao {
 
     @Insert
     suspend fun NewImage(image: Image)
+
+    @Insert
+    suspend fun NewReaction(reactions: Reactions)
+
+    @Query("Select Exists(Select * From Reactions Where PostId=:postId And UserName=:userName)")
+    fun isLikedPost(postId: Int, userName: String):Boolean
 
     @Query("Select Count() From Followers Where UserName=:userName")
     fun countFollowers(userName:String):Int

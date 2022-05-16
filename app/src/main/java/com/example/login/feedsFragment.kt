@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.Data.GGDbContext
 import com.example.login.ViewModels.Comment
@@ -62,6 +63,7 @@ class feedsFragment() : Fragment() {
                 val PostImage = Dao.selectPostImage(i.Post.PostId)
                 val PostComments = Dao.selectCommentswAccount(i.Post.PostId)
                 val Post=Post()
+                Post.postId=i.Post.PostId
                 Post.profilePic = i.Account.ProfilePic
                 Post.userName = i.Account.UserName
                 Post.dateTime = i.Post.DateTime
@@ -85,6 +87,8 @@ class feedsFragment() : Fragment() {
             Log.i("GGData", "$Posts gotposts")
             val adapter=FeedRecyclerAdapter(requireContext(), Posts)
             recyclerView.adapter=adapter
+
+
         }
         newpostbtn.setOnClickListener {
 
