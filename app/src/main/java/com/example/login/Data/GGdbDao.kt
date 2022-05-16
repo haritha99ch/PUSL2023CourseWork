@@ -37,7 +37,7 @@ interface GGdbDao {
     @Query("Select * From Image Where PostId=:postId")
     fun selectPostImage(postId: Int):Image
 
-    @Query("Select * From Post")
+    @Query("Select * From Post Order By RANDOM()")
     fun selectPostswAccount():List<PostwAccount>
 
     @Query("Select * From Post")

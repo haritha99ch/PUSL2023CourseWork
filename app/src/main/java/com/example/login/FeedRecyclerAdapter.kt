@@ -20,7 +20,6 @@ class FeedRecyclerAdapter(
         val txtUserName = itemView.findViewById<TextView>(R.id.userName)
         val txtDatetime=itemView.findViewById<TextView>(R.id.date_time)
         val imgPostImage=itemView.findViewById<ImageView>(R.id.postpic)
-        val rwComments=itemView.findViewById<RecyclerView>(R.id.commentView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -47,7 +46,6 @@ class FeedRecyclerAdapter(
 
 
             val commentRecyclerAdapter=CommentRecyclerAdapter(context, list)
-            rwComments.adapter=commentRecyclerAdapter
         }
     }
 

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="#484848"
-    tools:context=".feedsFragment">
+    tools:context=".feedsFragment"
+    android:layout_marginHorizontal="1dp"
+    android:layout_marginVertical="3dp">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -139,29 +142,31 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="0dp">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="90dp"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/todo"
-                    android:scaleType="fitCenter"
 
-                    android:src="@drawable/ic_like" />
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:backgroundTint="#00FFFFFF"
+                    android:cropToPadding="false"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_like"
+                    app:tint="#FFFFFF" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="150dp"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/todo"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_comment" />
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@drawable/ic_comment"
+                    app:tint="#FFFFFF" />
 
 
             </LinearLayout>
@@ -170,18 +175,6 @@
 
 
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/commentView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/layout_interaction"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp" />
 
 
 </RelativeLayout>
