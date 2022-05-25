@@ -10,8 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.Data.GGDbContext
+import com.example.login.Session.LoginPref
 import com.example.login.ViewModels.Comment
 import com.example.login.ViewModels.Post
 import kotlinx.coroutines.*
@@ -34,6 +38,7 @@ class feedsFragment() : Fragment() {
     private lateinit var posts: List<Post>
     private lateinit var recyclerView: RecyclerView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -48,44 +53,53 @@ class feedsFragment() : Fragment() {
     ): View? {
         val view=inflater.inflate(R.layout.fragment_feeds, container, false)
         val newpostbtn: Button = view.findViewById(R.id.createnewpostbtn)
+
         recyclerView=view.findViewById(R.id.feedView)
         var Posts = mutableListOf<Post>()
-        CoroutineScope(Dispatchers.IO).launch {
-            val Dao = GGDbContext.getInstance(requireContext()).gGdbDao
-            val posts = Dao.selectPostswAccount()
-            Log.i("GGData", "$posts CoroutineScope \n")
+        lifecycleScope
+        GlobalScope.launch {
+            withContext(Dispatchers.Main) {
+                var session = LoginPref(requireContext())
+                val user = session.getUserDetails()
+                    .get(LoginPref.KEY_USERNAME).toString()
+                val Dao = GGDbContext.getInstance(requireContext()).gGdbDao
+                val posts = Dao.selectPostswAccount()
+                Log.i("GGData", "$posts CoroutineScope \n")
 
-            posts.forEach { i ->
+                posts.forEach { i ->
 
-                val PostImage = Dao.selectPostImage(i.Post.PostId)
-                val PostComments = Dao.selectCommentswAccount(i.Post.PostId)
-                val Post=Post()
-                Post.postId=i.Post.PostId
-                Post.profilePic = i.Account.ProfilePic
-                Post.userName = i.Account.UserName
-                Post.dateTime = i.Post.DateTime
-                Post.heading = i.Post.Heading
-                Post.postImage = PostImage.ImageName
-                Post.likes = 2
-                Post.heading="Elo"
-                Post.postImageUrl="sdf"
-                Post.profilePicUrl="sdf"
+                    val PostImage = Dao.selectPostImage(i.Post.PostId)
+                    val PostComments = Dao.selectCommentswAccount(i.Post.PostId)
+                    val Post=Post()
+                    Post.postId=i.Post.PostId
+                    Post.profilePic = i.Account.ProfilePic
+                    Post.userName = i.Account.UserName
+                    Post.dateTime = i.Post.DateTime
+                    Post.heading = i.Post.Heading
+                    Post.postImage = PostImage.ImageName
+                    Post.likes = 2
+                    Post.heading="Elo"
+                    Post.postImageUrl="sdf"
+                    Post.profilePicUrl="sdf"
+                    Post.currUserLiked=Dao.isLikedPost(i.Post.PostId, user)
 
-                PostComments.forEach {
-                    val Comment=Comment()
-                    Comment.userName=it.Comment.UserName
-                    Comment.comment=it.Comment.Comment
-                    Post.comments = Post.comments?.plus(Comment)
+                    PostComments.forEach {
+                        val Comment=Comment()
+                        Comment.userName=it.Comment.UserName
+                        Comment.comment=it.Comment.Comment
+                        Post.comments = Post.comments?.plus(Comment)
+                    }
+                    Posts.add(Post)
+                    Log.i("GGData", "$PostComments itterate \n")
+
                 }
-                Posts.add(Post)
-                Log.i("GGData", "$PostComments itterate \n")
+                Log.i("GGData", "$Posts gotposts")
+                val adapter=FeedRecyclerAdapter(requireContext(), Posts, requireActivity())
+                recyclerView.adapter=adapter
 
+                this.cancel()
             }
-            Log.i("GGData", "$Posts gotposts")
-            val adapter=FeedRecyclerAdapter(requireContext(), Posts)
-            recyclerView.adapter=adapter
 
-        this.cancel()
         }
         newpostbtn.setOnClickListener {
 

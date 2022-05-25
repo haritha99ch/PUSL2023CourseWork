@@ -1,16 +1,17 @@
 package com.example.login
 
+import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.CorrectionInfo
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.login.Data.Entities.Reactions
@@ -18,19 +19,25 @@ import com.example.login.Data.GGDbContext
 import com.example.login.Session.LoginPref
 import com.example.login.ViewModels.Comment
 import com.example.login.ViewModels.Post
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import kotlinx.coroutines.*
 
 class FeedRecyclerAdapter(
     val context: Context,
-    val posts: List<Post>
+    val posts: List<Post>,
+    val activity: Activity
 ) : RecyclerView.Adapter<FeedRecyclerAdapter.PostViewHolder>() {
-
+    private lateinit var navControl:NavController
 
     inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtUserName = itemView.findViewById<TextView>(R.id.userName)
         val txtDatetime = itemView.findViewById<TextView>(R.id.date_time)
         val imgPostImage = itemView.findViewById<ImageView>(R.id.postpic)
         val btnLike = itemView.findViewById<ImageButton>(R.id.btnLike)
+        val btnComment = itemView.findViewById<ImageButton>(R.id.imgBtnComment)
+
+
 
     }
 
@@ -38,6 +45,9 @@ class FeedRecyclerAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.feed_item, parent, false)
+        navControl=Navigation.findNavController(
+            activity, R.id.mainContainer
+        )
         return PostViewHolder(view)
     }
 
@@ -50,7 +60,7 @@ class FeedRecyclerAdapter(
                 .asBitmap()
                 .load(img)
                 .into(imgPostImage)
-            if (false) {
+            if (post.currUserLiked) {
                 btnLike.setColorFilter(
                     ContextCompat.getColor(context, R.color.DarkPink),
                     android.graphics.PorterDuff.Mode.SRC_IN
@@ -60,14 +70,29 @@ class FeedRecyclerAdapter(
                     ContextCompat.getColor(context, R.color.white),
                     android.graphics.PorterDuff.Mode.SRC_IN
                 )
+
             }
             btnLike.setOnClickListener {
-                Toast.makeText(context, "You liked this photo ", Toast.LENGTH_SHORT).show()
-                likeThePost(post.postId)
-                btnLike.setColorFilter(
-                    ContextCompat.getColor(context, R.color.DarkPink),
-                    android.graphics.PorterDuff.Mode.SRC_IN
-                )
+                if (post.currUserLiked){
+                    Toast.makeText(context, "You disliked this photo ", Toast.LENGTH_SHORT).show()
+                    disLikeThePost(post.postId)
+                    btnLike.setColorFilter(
+                        ContextCompat.getColor(context, R.color.white),
+                        android.graphics.PorterDuff.Mode.SRC_IN
+                    )
+                }else{
+                    Toast.makeText(context, "You liked this photo ", Toast.LENGTH_SHORT).show()
+                    likeThePost(post.postId)
+                    btnLike.setColorFilter(
+                        ContextCompat.getColor(context, R.color.DarkPink),
+                        android.graphics.PorterDuff.Mode.SRC_IN
+                    )
+                }
+            }
+            btnComment.setOnClickListener {
+                val postId = null
+                val bundle= bundleOf(Pair("PostId", post.postId) )
+                navControl.navigate(R.id.action_nav_commentSection, bundle)
             }
             Log.i("GGData", "$img RecyclerView")
             var list = mutableListOf<Comment>()
@@ -81,6 +106,15 @@ class FeedRecyclerAdapter(
         }
     }
 
+    private fun disLikeThePost(postId: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            var session = LoginPref(context)
+            val user = session.getUserDetails()
+                .get(LoginPref.KEY_USERNAME).toString()
+            val Dao = GGDbContext.getInstance(context).gGdbDao
+            Dao.disLikePost(postId, user)
+        }
+    }
 
     private fun likeThePost(postId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -93,7 +127,6 @@ class FeedRecyclerAdapter(
                     user.get(LoginPref.KEY_USERNAME).toString()
                 )
             )
-            this.cancel()
         }
     }
 
@@ -101,4 +134,7 @@ class FeedRecyclerAdapter(
     override fun getItemCount(): Int {
         return posts.size
     }
+
+
+
 }

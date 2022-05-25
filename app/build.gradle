@@ -59,5 +59,6 @@ dependencies {
     //RoundedImageView
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation "com.github.bumptech.glide:glide:4.13.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-rc01"
 
 }

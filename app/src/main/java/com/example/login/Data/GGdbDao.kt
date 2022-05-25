@@ -28,6 +28,9 @@ interface GGdbDao {
     @Query("Select Exists(Select * From Reactions Where PostId=:postId And UserName=:userName)")
     suspend fun isLikedPost(postId: Int, userName: String):Boolean
 
+    @Query("Delete From Reactions Where PostId=:postId And UserName=:userName")
+    suspend fun disLikePost(postId: Int, userName: String)
+
     @Query("Select Count() From Followers Where UserName=:userName")
     suspend fun countFollowers(userName:String):Int
 
@@ -49,8 +52,8 @@ interface GGdbDao {
     @Query("Select * From Post")
     suspend fun selectPostCommentsAccount():List<PostwComments>
 
-    @Query("Select * From Account")
-    suspend fun selectPostAccount():List<PostsAccount>
+    @Query("Select * From Post Where PostId=:postId")
+    suspend fun selectPostwAccount(postId: Int):PostwAccount
 
     @Query("Select * From Account Where UserName=:userName")
     suspend fun selectUserAccount(userName:String): UserAccount

@@ -15,10 +15,7 @@ import com.example.login.Data.GGDbContext
 import com.example.login.Session.LoginPref
 import com.example.login.ViewModels.Comment
 import com.example.login.ViewModels.Post
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,42 +51,44 @@ class profileFragment : Fragment() {
         val view=inflater.inflate(R.layout.fragment_profile, container, false)
         recyclerView=view.findViewById(R.id.feedView)
         var Posts = mutableListOf<Post>()
-        CoroutineScope(Dispatchers.IO).launch {
-            val Dao = GGDbContext.getInstance(requireContext()).gGdbDao
-            val posts = Dao.selectUserPostswAccount(user.get(LoginPref.KEY_USERNAME).toString())
-            Log.i("GGData", "$posts CoroutineScope \n")
+        GlobalScope.launch {
+            withContext(Dispatchers.Main) {
+                val Dao = GGDbContext.getInstance(requireContext()).gGdbDao
+                val posts = Dao.selectUserPostswAccount(user.get(LoginPref.KEY_USERNAME).toString())
+                Log.i("GGData", "$posts CoroutineScope \n")
 
-            posts.forEach { i ->
+                posts.forEach { i ->
 
-                val PostImage = Dao.selectPostImage(i.Post.PostId)
-                val PostComments = Dao.selectCommentswAccount(i.Post.PostId)
-                val Post= Post()
-                Post.postId=i.Post.PostId
-                Post.profilePic = i.Account.ProfilePic
-                Post.userName = i.Account.UserName
-                Post.dateTime = i.Post.DateTime
-                Post.heading = i.Post.Heading
-                Post.postImage = PostImage.ImageName
-                Post.likes = 2
-                Post.heading="Elo"
-                Post.postImageUrl="sdf"
-                Post.profilePicUrl="sdf"
+                    val PostImage = Dao.selectPostImage(i.Post.PostId)
+                    val PostComments = Dao.selectCommentswAccount(i.Post.PostId)
+                    val Post= Post()
+                    Post.postId=i.Post.PostId
+                    Post.profilePic = i.Account.ProfilePic
+                    Post.userName = i.Account.UserName
+                    Post.dateTime = i.Post.DateTime
+                    Post.heading = i.Post.Heading
+                    Post.postImage = PostImage.ImageName
+                    Post.likes = 2
+                    Post.heading="Elo"
+                    Post.postImageUrl="sdf"
+                    Post.profilePicUrl="sdf"
 
-                PostComments.forEach {
-                    val Comment= Comment()
-                    Comment.userName=it.Comment.UserName
-                    Comment.comment=it.Comment.Comment
-                    Post.comments = Post.comments?.plus(Comment)
+                    PostComments.forEach {
+                        val Comment= Comment()
+                        Comment.userName=it.Comment.UserName
+                        Comment.comment=it.Comment.Comment
+                        Post.comments = Post.comments?.plus(Comment)
+                    }
+                    Posts.add(Post)
+                    Log.i("GGData", "$PostComments itterate \n")
+
                 }
-                Posts.add(Post)
-                Log.i("GGData", "$PostComments itterate \n")
+                Log.i("GGData", "$Posts gotposts")
+                val adapter=FeedRecyclerAdapter(requireContext(), Posts, requireActivity())
+                recyclerView.adapter=adapter
 
+                this.cancel()
             }
-            Log.i("GGData", "$Posts gotposts")
-            val adapter=FeedRecyclerAdapter(requireContext(), Posts)
-            recyclerView.adapter=adapter
-
-            this.cancel()
         }
         var btnLogOut=view.findViewById<Button>(R.id.logout)
         var userName=view.findViewById<TextView>(R.id.accUserName)

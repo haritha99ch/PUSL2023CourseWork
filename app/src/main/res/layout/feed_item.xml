@@ -12,11 +12,11 @@
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:id="@+id/relay1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp">
 
         <ImageView
             android:id="@+id/profile_pic"
@@ -28,21 +28,21 @@
             android:src="@drawable/pro_pic_01" />
 
         <LinearLayout
-            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/profile_pic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
                 android:text="@string/cool_cat"
                 android:textColor="@color/white"
-                android:textSize="17sp"
-                android:fontFamily="sans-serif-medium"
 
-                android:layout_height="wrap_content"/>
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/date_time"
@@ -160,7 +160,7 @@
                     app:tint="#FFFFFF" />
 
                 <ImageButton
-                    android:id="@+id/imageButton3"
+                    android:id="@+id/imgBtnComment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

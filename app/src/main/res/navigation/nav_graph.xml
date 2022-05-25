@@ -9,7 +9,11 @@
         android:id="@+id/feedsFragment"
         android:name="com.example.login.feedsFragment"
         android:label="fragment_feeds"
-        tools:layout="@layout/fragment_feeds" />
+        tools:layout="@layout/fragment_feeds" >
+        <action
+            android:id="@+id/action_nav_commentSection"
+            app:destination="@id/commentsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.login.searchFragment"
@@ -25,4 +29,8 @@
         android:name="com.example.login.profileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/commentsFragment"
+        android:name="com.example.login.CommentsFragment"
+        android:label="CommentsFragment" />
 </navigation>

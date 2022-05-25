@@ -10,6 +10,7 @@ class Post {
     lateinit var gameName:String
     lateinit var heading:String
     lateinit var postImage:String
+    var currUserLiked:Boolean=false
     var likes:Int=0
     var comments:List<Comment>? = null
 
