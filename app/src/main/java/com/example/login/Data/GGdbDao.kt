@@ -28,6 +28,13 @@ interface GGdbDao {
     @Insert
     suspend fun NewComment(comment: Comment)
 
+    //Update Profile Picture
+    @Query("Update Account Set ProfilePic=:image Where UserName=:userName")
+    suspend fun SetProfilePicture(userName: String, image: String)
+
+    @Query("Select ProfilePic From Account Where UserName=:userName")
+    suspend fun GetProfilePicture(userName: String):String
+
     //Count
     @Query("Select Count() From Reactions Where PostId=:postId")
     suspend fun countPostLikes(postId: Int):Int
@@ -40,6 +47,11 @@ interface GGdbDao {
 
     @Query("Select Count() From Followers Where Follower=:userName")
     suspend fun countFollowing(userName:String):Int
+
+    @Query("Select Count() From Reactions As R Join Post As P On R.PostId=P.PostId Join Account " +
+            "As " +
+            "A On P.UserName=A.UserName Where A.UserName=:userName")
+    suspend fun countTotalLikes(userName: String):Int
 
 
     @Query("Select Exists(Select * From Reactions Where PostId=:postId And UserName=:userName)")
