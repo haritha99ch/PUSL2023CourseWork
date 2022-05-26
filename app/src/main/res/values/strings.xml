@@ -55,6 +55,9 @@
     <string name="create_a_new_post">Create A New Post</string>
     <string name="game_name">Game Name</string>
     <string name="heading">Heading</string>
+    <string name="hintComment">Comment...</string>
+    <string name="Comment">This is a comment</string>
+    <string name="profile_picture">Profile Picture</string>
 
 
 </resources>

@@ -136,7 +136,7 @@
         android:layout_height="68dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/background_btn"
-        android:backgroundTint="@color/bottom_nav_background"
+        android:backgroundTint="@color/HeavyDark"
         android:padding="15dp"
         android:text="@string/login"
         android:textColor="@color/white"

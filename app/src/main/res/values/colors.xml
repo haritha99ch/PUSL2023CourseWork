@@ -8,8 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="DarkPink">#C13584</color>
-    <color name="bottom_nav_selected_item">#484848</color>
-    <color name="bottom_nav_background">#282828</color>
+    <color name="LightDark">#484848</color>
+    <color name="HeavyDark">#282828</color>
     <color name="bottom_nav_item">#FFFFFF</color>
     <color name="fragment_bg_color">#F3F3F3</color>
     <color name="grey">#808080</color>

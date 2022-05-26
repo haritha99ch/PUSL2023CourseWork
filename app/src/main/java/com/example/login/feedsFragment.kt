@@ -1,6 +1,5 @@
 package com.example.login
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,10 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login.Data.GGDbContext
 import com.example.login.Session.LoginPref
@@ -56,8 +52,7 @@ class feedsFragment() : Fragment() {
 
         recyclerView=view.findViewById(R.id.feedView)
         var Posts = mutableListOf<Post>()
-        lifecycleScope
-        GlobalScope.launch {
+        lifecycleScope.launch {
             withContext(Dispatchers.Main) {
                 var session = LoginPref(requireContext())
                 val user = session.getUserDetails()
@@ -75,12 +70,11 @@ class feedsFragment() : Fragment() {
                     Post.profilePic = i.Account.ProfilePic
                     Post.userName = i.Account.UserName
                     Post.dateTime = i.Post.DateTime
-                    Post.heading = i.Post.Heading
+                    Post.Description = i.Post.Description
                     Post.postImage = PostImage.ImageName
-                    Post.likes = 2
-                    Post.heading="Elo"
-                    Post.postImageUrl="sdf"
-                    Post.profilePicUrl="sdf"
+                    Post.likes = Dao.countPostLikes(i.Post.PostId)
+                    Post.noComments=Dao.countPostComments(i.Post.PostId)
+                    Post.gameName=i.Post.Heading
                     Post.currUserLiked=Dao.isLikedPost(i.Post.PostId, user)
 
                     PostComments.forEach {

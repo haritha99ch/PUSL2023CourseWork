@@ -2,7 +2,6 @@ package com.example.login
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,9 +30,14 @@ class FeedRecyclerAdapter(
     private lateinit var navControl:NavController
 
     inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imgProfilePic=itemView.findViewById<ImageView>(R.id.profile_pic)
         val txtUserName = itemView.findViewById<TextView>(R.id.userName)
         val txtDatetime = itemView.findViewById<TextView>(R.id.date_time)
+        val txtGameName=itemView.findViewById<TextView>(R.id.txtGameName)
+        val txtDescription=itemView.findViewById<TextView>(R.id.description)
         val imgPostImage = itemView.findViewById<ImageView>(R.id.postpic)
+        val txtPostLikes=itemView.findViewById<TextView>(R.id.post_likes)
+        val txtComments=itemView.findViewById<TextView>(R.id.post_comments)
         val btnLike = itemView.findViewById<ImageButton>(R.id.btnLike)
         val btnComment = itemView.findViewById<ImageButton>(R.id.imgBtnComment)
 
@@ -54,11 +58,19 @@ class FeedRecyclerAdapter(
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = posts[position]
         with(holder) {
-            txtUserName.text = post.userName
-            var img = post.postImageUrl
             Glide.with(context)
                 .asBitmap()
-                .load(img)
+                .load(post.profilePicUrl)
+                .into(imgProfilePic)
+            txtUserName.text = post.userName
+            txtDatetime.text=post.dateTime
+            txtGameName.text=post.gameName
+            txtDescription.text=post.Description
+            txtPostLikes.text=post.likes.toString()
+            txtComments.text="${post.noComments} Comments"
+            Glide.with(context)
+                .asBitmap()
+                .load(post.postImageUrl)
                 .into(imgPostImage)
             if (post.currUserLiked) {
                 btnLike.setColorFilter(
@@ -76,6 +88,7 @@ class FeedRecyclerAdapter(
                 if (post.currUserLiked){
                     Toast.makeText(context, "You disliked this photo ", Toast.LENGTH_SHORT).show()
                     disLikeThePost(post.postId)
+                    txtPostLikes.text=(txtPostLikes.text.toString().toInt()-1).toString()
                     btnLike.setColorFilter(
                         ContextCompat.getColor(context, R.color.white),
                         android.graphics.PorterDuff.Mode.SRC_IN
@@ -83,18 +96,19 @@ class FeedRecyclerAdapter(
                 }else{
                     Toast.makeText(context, "You liked this photo ", Toast.LENGTH_SHORT).show()
                     likeThePost(post.postId)
+                    txtPostLikes.text=(txtPostLikes.text.toString().toInt()+1).toString()
                     btnLike.setColorFilter(
                         ContextCompat.getColor(context, R.color.DarkPink),
                         android.graphics.PorterDuff.Mode.SRC_IN
                     )
                 }
+
             }
             btnComment.setOnClickListener {
                 val postId = null
                 val bundle= bundleOf(Pair("PostId", post.postId) )
                 navControl.navigate(R.id.action_nav_commentSection, bundle)
             }
-            Log.i("GGData", "$img RecyclerView")
             var list = mutableListOf<Comment>()
             var testCom = Comment()
             testCom.userName = "Infi"
@@ -102,9 +116,9 @@ class FeedRecyclerAdapter(
             list += testCom
 
 
-            val commentRecyclerAdapter = CommentRecyclerAdapter(context, list)
         }
     }
+
 
     private fun disLikeThePost(postId: Int) {
         CoroutineScope(Dispatchers.IO).launch {

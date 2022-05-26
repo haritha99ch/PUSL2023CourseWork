@@ -1,6 +1,5 @@
 package com.example.login
 
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -66,11 +65,11 @@ class profileFragment : Fragment() {
                     Post.profilePic = i.Account.ProfilePic
                     Post.userName = i.Account.UserName
                     Post.dateTime = i.Post.DateTime
-                    Post.heading = i.Post.Heading
+                    Post.gameName = i.Post.Heading
                     Post.postImage = PostImage.ImageName
                     Post.likes = 2
-                    Post.heading="Elo"
-                    Post.postImageUrl="sdf"
+                    Post.Description=i.Post.Description
+                    Post.postImageUrl=""
                     Post.profilePicUrl="sdf"
 
                     PostComments.forEach {

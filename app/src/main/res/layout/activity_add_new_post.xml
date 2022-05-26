@@ -11,7 +11,7 @@
         android:id="@+id/new_post"
         android:layout_width="400dp"
         android:layout_height="47dp"
-        android:background="@color/bottom_nav_selected_item"
+        android:background="@color/LightDark"
         android:text="@string/create_a_new_post"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -35,7 +35,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/heading"
+        android:id="@+id/txtGameName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/heading"
@@ -56,7 +56,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heading" />
+        app:layout_constraintTop_toBottomOf="@+id/txtGameName" />
 
     <Button
         android:id="@+id/filepickerbtn"

@@ -25,11 +25,15 @@ interface GGdbDao {
     @Insert
     suspend fun NewReaction(reactions: Reactions)
 
-    @Query("Select Exists(Select * From Reactions Where PostId=:postId And UserName=:userName)")
-    suspend fun isLikedPost(postId: Int, userName: String):Boolean
+    @Insert
+    suspend fun NewComment(comment: Comment)
 
-    @Query("Delete From Reactions Where PostId=:postId And UserName=:userName")
-    suspend fun disLikePost(postId: Int, userName: String)
+    //Count
+    @Query("Select Count() From Reactions Where PostId=:postId")
+    suspend fun countPostLikes(postId: Int):Int
+
+    @Query("Select Count() From Comment Where PostId=:postId")
+    suspend fun countPostComments(postId: Int):Int
 
     @Query("Select Count() From Followers Where UserName=:userName")
     suspend fun countFollowers(userName:String):Int
@@ -37,7 +41,16 @@ interface GGdbDao {
     @Query("Select Count() From Followers Where Follower=:userName")
     suspend fun countFollowing(userName:String):Int
 
-    @Query("Select * From Comment Where PostId=:postId")
+
+    @Query("Select Exists(Select * From Reactions Where PostId=:postId And UserName=:userName)")
+    suspend fun isLikedPost(postId: Int, userName: String):Boolean
+
+    @Query("Delete From Reactions Where PostId=:postId And UserName=:userName")
+    suspend fun disLikePost(postId: Int, userName: String)
+
+
+
+    @Query("Select * From Comment Where PostId=:postId Order By CommentId Desc")
     suspend fun selectCommentswAccount(postId:Int):List<CommentwAccount>
 
     @Query("Select * From Image Where PostId=:postId")

@@ -19,17 +19,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/profilePic"
         android:layout_width="138dp"
-        android:layout_height="104dp"
+        android:layout_height="138dp"
         android:layout_marginTop="100dp"
-        android:contentDescription="@string/todo2"
+        android:contentDescription="@string/profile_picture"
+        android:scaleType="fitCenter"
+        android:src="@drawable/defualt_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/coverimg"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="@+id/coverimg" />
 
     <TextView
         android:id="@+id/accUserName"

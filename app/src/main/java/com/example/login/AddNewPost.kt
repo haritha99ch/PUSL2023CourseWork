@@ -1,11 +1,9 @@
 package com.example.login
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.util.Log
-import android.view.inputmethod.CorrectionInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -22,10 +20,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import java.io.File
-import java.io.InputStream
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 class AddNewPost : AppCompatActivity() {
@@ -55,7 +50,7 @@ class AddNewPost : AppCompatActivity() {
         imageView = findViewById(R.id.post)
         postbtn=findViewById<Button?>(R.id.post_btn)
         txtGameName=findViewById(R.id.postGame)
-        txtHeading=findViewById(R.id.heading)
+        txtHeading=findViewById(R.id.txtGameName)
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
         val currentDate = sdf.format(Date())
 
@@ -70,7 +65,7 @@ class AddNewPost : AppCompatActivity() {
                 val newPost=Post(
                     0,
                     currentUserName!!,
-                    sdf.format(Date()).toString(),
+                    currentDate.toString(),
                     txtGameName.text.toString(),
                     txtHeading.text.toString(),
                 )
