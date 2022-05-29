@@ -58,6 +58,10 @@
     <string name="hintComment">Comment...</string>
     <string name="Comment">This is a comment</string>
     <string name="profile_picture">Profile Picture</string>
+    <string name="Search">Search For Users</string>
+    <string name="usernamev">UserName</string>
+    <string name="real_name">Real Name</string>
+    <string name="follow">Follow</string>
 
 
 </resources>

@@ -1,15 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".searchFragment">
+    tools:context=".searchFragment"
+    android:background="@color/HeavyDark">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:gravity="center"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Search" />
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_marginBottom="5dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:background="@color/LightDark"
+            android:padding="5dp">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_search" />
+
+            <EditText
+                android:id="@+id/txtSearchUsers"
+                android:layout_width="333dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/HeavyDark"
+                android:ems="10"
+                android:hint="@string/Search"
+                android:textColorHint="@color/LightDark"
+                android:textColor="@color/white"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rwSearchRsltUsers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
 </FrameLayout>

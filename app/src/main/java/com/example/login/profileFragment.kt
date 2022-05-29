@@ -87,6 +87,8 @@ class profileFragment : Fragment() {
         lblNoFllowers=view.findViewById(R.id.no_of_followers)
         lblNoFllowing=view.findViewById(R.id.no_of_following)
         lblNoLikes=view.findViewById(R.id.no_of_likes)
+        val btnLogOut=view.findViewById<Button>(R.id.logout)
+
         val Posts = mutableListOf<Post>()
         lifecycleScope.launch {
             withContext(Dispatchers.Main) {
@@ -131,7 +133,6 @@ class profileFragment : Fragment() {
                 this.cancel()
             }
         }
-        val btnLogOut=view.findViewById<Button>(R.id.logout)
         val userName=view.findViewById<TextView>(R.id.accUserName)
         userName.text=user
         var profilePic=view.findViewById<ImageView>(R.id.profilePic)

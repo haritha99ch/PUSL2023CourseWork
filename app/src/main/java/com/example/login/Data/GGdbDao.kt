@@ -48,14 +48,23 @@ interface GGdbDao {
     @Query("Select Count() From Followers Where Follower=:userName")
     suspend fun countFollowing(userName:String):Int
 
-    @Query("Select Count() From Reactions As R Join Post As P On R.PostId=P.PostId Join Account " +
-            "As " +
-            "A On P.UserName=A.UserName Where A.UserName=:userName")
+    @Query("Select Count() From Reactions As R Join Post As P On R.PostId=P.PostId Join Account As A On P.UserName=A.UserName Where A.UserName=:userName")
     suspend fun countTotalLikes(userName: String):Int
 
-
+    //Validations
     @Query("Select Exists(Select * From Reactions Where PostId=:postId And UserName=:userName)")
     suspend fun isLikedPost(postId: Int, userName: String):Boolean
+
+    @Query("Select Exists(Select * From Followers Where UserName=:follower And Follower=:userName)")
+    suspend fun isFollowing(userName: String, follower:String):Boolean
+
+    //Following
+    @Insert
+    suspend fun followUser(follower:Followers)
+
+    @Query("Delete From Followers Where UserName=:userName And Follower=:follower")
+    suspend fun unfollowUser(userName: String, follower: String)
+
 
     @Query("Delete From Reactions Where PostId=:postId And UserName=:userName")
     suspend fun disLikePost(postId: Int, userName: String)
@@ -82,4 +91,7 @@ interface GGdbDao {
 
     @Query("Select * From Account Where UserName=:userName")
     suspend fun selectUserAccount(userName:String): UserAccount
+
+    @Query("Select * From Account")
+    suspend fun selectUserAccounts():List<UserAccount>
 }
