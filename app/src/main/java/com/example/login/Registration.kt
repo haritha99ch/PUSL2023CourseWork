@@ -22,12 +22,12 @@ class Registration : AppCompatActivity() {
 
         val  signinbutton2 = findViewById<Button>(R.id.signin)
         val  register = findViewById<Button>(R.id.regbtn)
-        var txtFirstName=findViewById<EditText>(R.id.firstName)
-        var txtLastName=findViewById<EditText>(R.id.lastName)
-        var txtEmail=findViewById<EditText>(R.id.email)
-        var txtUserName=findViewById<EditText>(R.id.username)
-        var txtAge=findViewById<EditText>(R.id.age)
-        var rgGender=findViewById<RadioGroup>(R.id.rgGender)
+        val txtFirstName=findViewById<EditText>(R.id.firstName)
+        val txtLastName=findViewById<EditText>(R.id.lastName)
+        val txtEmail=findViewById<EditText>(R.id.email)
+        val txtUserName=findViewById<EditText>(R.id.username)
+        val txtAge=findViewById<EditText>(R.id.age)
+        val rgGender=findViewById<RadioGroup>(R.id.rgGender)
         var valGender: String? =null
         rgGender.setOnCheckedChangeListener{rgGender, i ->
             var rb=findViewById<RadioButton>(i)
@@ -36,33 +36,41 @@ class Registration : AppCompatActivity() {
                 Log.i("Gender", "${txtEmail.text} gender")
             }
         }
-        var txtPassword=findViewById<EditText>(R.id.password)
+        val txtPassword=findViewById<EditText>(R.id.password)
         var txtConfirmpassword=findViewById<EditText>(R.id.confirmpassword)
 
+        //Registeration button
         register.setOnClickListener{
-            var user=User(
-                0,
-                txtUserName.text.toString(),
-                txtFirstName.text.toString(),
-                txtLastName.text.toString(),
-                valGender.toString(),
-                txtAge.text.toString().toInt(),
-            )
-            var account=Account(
-                txtUserName.text.toString(),
-                txtEmail.text.toString(),
-                txtPassword.text.toString(),
-                "profiledefault",
-                "coverdefault",
-            )
+            if(!(txtFirstName.text.isNullOrEmpty()&&txtLastName.text.isNullOrEmpty()&&txtEmail.text
+                    .isNullOrEmpty()&&txtUserName.text.isNullOrEmpty())){
+                val user=User(
+                    0,
+                    txtUserName.text.toString(),
+                    txtFirstName.text.toString(),
+                    txtLastName.text.toString(),
+                    valGender.toString(),
+                    txtAge.text.toString().toInt(),
+                )
+                val account=Account(
+                    txtUserName.text.toString(),
+                    txtEmail.text.toString(),
+                    txtPassword.text.toString(),
+                    "profiledefault",
+                    "coverdefault",
+                )
 
-            val context=this
-            CoroutineScope(Dispatchers.IO).launch {
-                val Dao = GGDbContext.getInstance(context).gGdbDao
-                Dao.NewAccount(account)
-                Dao.NewUser(user)
-                this.cancel()
+                val context=this
+                CoroutineScope(Dispatchers.IO).launch {
+                    val Dao = GGDbContext.getInstance(context).gGdbDao
+                    Dao.NewAccount(account)
+                    Dao.NewUser(user)
+                    this.cancel()
+                }
             }
+            val intent = Intent(this,login::class.java)
+            startActivity(intent)
+            finish()
+
         }
 
         signinbutton2.setOnClickListener {

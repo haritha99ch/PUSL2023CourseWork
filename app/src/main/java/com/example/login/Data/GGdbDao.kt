@@ -77,7 +77,7 @@ interface GGdbDao {
     @Query("Select * From Image Where PostId=:postId")
     suspend fun selectPostImage(postId: Int):Image
 
-    @Query("Select * From Post Order By RANDOM()")
+    @Query("Select * From Post Order By PostId Desc")
     suspend fun selectPostswAccount():List<PostwAccount>
 
     @Query("Select * From Post Where UserName=:userName Order By RANDOM()")
